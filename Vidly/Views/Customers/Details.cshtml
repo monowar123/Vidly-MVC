@@ -1,0 +1,19 @@
+﻿@model Vidly.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+<ul>
+    <li>Membership Type: @Model.MembershipType.Name</li>
+    @if (Model.BirthDate.HasValue) {
+        <li>Birthdate: @Model.BirthDate.Value.ToShortDateString()</li>
+    }
+    <li>Discount Rate: @Model.MembershipType.DiscountRate</li>
+    <li>Subscribed to News Letter: @Model.IsSubscribedToNewsLetter</li>
+</ul>
+
+@*@Html.ActionLink("Back", "Index", "Customers")*@
+<button type="button" onclick="location.href = '@Url.Action("Index", "Customers")'" class="btn btn-primary">Back</button>
